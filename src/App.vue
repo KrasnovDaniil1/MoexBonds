@@ -5,8 +5,8 @@ import Table from "./components/Table.vue";
 import { onMounted } from "vue";
 import { getBonds } from "./api/api";
 
-onMounted(() => {
-    console.log("t", getBonds());
+onMounted(async () => {
+    console.log("t", await getBonds());
 });
 </script>
 

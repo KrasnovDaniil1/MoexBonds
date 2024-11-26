@@ -4,6 +4,7 @@ import Table from "./components/Table.vue";
 
 import { onMounted } from "vue";
 import { getBonds } from "./api/api";
+import { RouterView } from "vue-router";
 
 onMounted(async () => {
     console.log("t", await getBonds());
@@ -11,6 +12,9 @@ onMounted(async () => {
 </script>
 
 <template>
-    <Header />
-    <Table />
+  <Header />
+  <Table />
+  <div class="text-3xl text-center">
+    <RouterView />
+  </div>
 </template>

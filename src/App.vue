@@ -6,8 +6,8 @@ import { onMounted } from "vue";
 import { getBonds } from "./api/api";
 import { RouterView } from "vue-router";
 
-onMounted(() => {
-  console.log("t", getBonds());
+onMounted(async () => {
+    console.log("t", await getBonds());
 });
 </script>
 

@@ -4,13 +4,17 @@ import Table from "./components/Table.vue";
 
 import { onMounted } from "vue";
 import { getBonds } from "./api/api";
+import { RouterView } from "vue-router";
 
 onMounted(() => {
-    console.log("t", getBonds());
+  console.log("t", getBonds());
 });
 </script>
 
 <template>
-    <Header />
-    <Table />
+  <Header />
+  <Table />
+  <div class="text-3xl text-center">
+    <RouterView />
+  </div>
 </template>

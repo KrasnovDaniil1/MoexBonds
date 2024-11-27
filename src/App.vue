@@ -7,14 +7,14 @@ import { getBonds } from "./api/api";
 import { RouterView } from "vue-router";
 
 onMounted(async () => {
-    console.log("t", await getBonds());
+    console.log(await getBonds());
 });
 </script>
 
 <template>
-  <Header />
-  <Table />
-  <div class="text-3xl text-center">
-    <RouterView />
-  </div>
+    <Header />
+    <Table />
+    <div class="text-3xl text-center">
+        <RouterView />
+    </div>
 </template>

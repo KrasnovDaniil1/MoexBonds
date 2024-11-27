@@ -6,17 +6,20 @@ import Loader from "./components/Loader.vue";
 import { onMounted, ref } from "vue";
 import { getBonds } from "./api/api";
 import { RouterView } from "vue-router";
+import { columnsRus } from "./api/services";
 
 onMounted(async () => {
-    console.log(await getBonds());
+    data.value = await getBonds();
+    console.log(data.value);
 });
 
-const loading = ref(false)
+const loading = ref(true);
+let data = ref();
 </script>
 
 <template>
-    <Loader v-if="loading" :loading="loading" />
     <Header />
+    <Loader :loading="loading" />
     <Table />
     <div class="text-3xl text-center">
         <RouterView />

@@ -19,7 +19,7 @@ export const mergeObjectToObject = (securities, markets, key) => {
     return data;
 };
 
-const columnsRus = {
+export const columnsRus = {
     ISIN: "ISIN",
     SHORTNAME: "SHORTNAME",
     COUPONPERIOD: "COUPONPERIOD",

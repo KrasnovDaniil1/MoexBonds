@@ -21,7 +21,7 @@ let data = ref();
 <template>
     <Header />
     <Loader :loading="loading" />
-    <Table />
+    <Table :columnsRus="columnsRus" :data="data" />
     <div class="text-3xl text-center">
         <RouterView />
     </div>

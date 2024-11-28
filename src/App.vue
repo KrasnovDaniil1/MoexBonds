@@ -15,6 +15,7 @@ onMounted(async () => {
 
 const loading = ref(true);
 let data = ref();
+
 </script>
 
 <template>

@@ -6,17 +6,15 @@ defineProps({
 </script>
 
 <template>
-  <div v-if="!loading">
+  <div v-if="!loading" class="flex flex-col items-center">
     <div class="fixed top-0 left-0 h-full w-full bg-white z-10"></div>
-    <div class="flex flex-col items-center">
-        <div class="lds-ellipsis fixed z-20">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
-        <p class="fixed z-20">Wait a minute...</p>
+    <div class="lds-ellipsis fixed z-20">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
     </div>
+    <p class="fixed z-20">Wait a minute...</p>
   </div>
 </template>
 

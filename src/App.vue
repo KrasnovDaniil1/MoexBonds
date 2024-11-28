@@ -2,6 +2,7 @@
 import Header from "./components/Header.vue";
 import Table from "./components/Table.vue";
 import Loader from "./components/Loader.vue";
+import FAQ from "./views/FAQ.vue";
 
 import { onMounted, ref } from "vue";
 import { getBonds } from "./api/api";
@@ -21,8 +22,10 @@ let data = ref();
 <template>
     <Header />
     <Loader :loading="loading" />
-    <Table :columnsRus="columnsRus" :data="data" />
+    <!-- <Table :columnsRus="columnsRus" :data="data" /> -->
+     <FAQ />
     <div class="text-3xl text-center">
         <RouterView />
     </div>
 </template>
+

@@ -2,6 +2,7 @@
 import Header from "./components/Header.vue";
 import Table from "./components/Table.vue";
 import Loader from "./components/Loader.vue";
+import FAQ from "./views/FAQ.vue";
 
 import { onMounted, ref } from "vue";
 import { getBonds } from "./api/api";
@@ -15,13 +16,13 @@ onMounted(async () => {
 
 const loading = ref(true);
 let data = ref();
-
 </script>
 
 <template>
     <Header />
     <Loader :loading="loading" />
-    <Table />
+    <Table :columnsRus="columnsRus" :data="data" />
+    <!-- <FAQ /> -->
     <div class="text-3xl text-center">
         <RouterView />
     </div>

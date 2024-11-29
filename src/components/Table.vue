@@ -1,47 +1,9 @@
 <script setup>
-const columnsRus = {
-  id: "Код",
-  name: "",
-  startData: "Открытие",
-  endData: "Закрытие",
-  price: "Цена",
-  coupon: "Купон",
-  couponPeriod: "Выплат в год",
-  couponDate: "Ближайший купон",
-  value: "Ближайший купон",
-  board: "Ближайший купон",
-};
-
-const data = [
-  {
-    id: "1",
-    src: "http",
-    info: "test",
-    name: "name",
-    startData: "startData",
-    endData: "endData",
-    price: "price",
-    coupon: "coupon",
-    couponPeriod: "couponPeriod",
-    couponDate: "couponDate",
-    value: "value",
-    board: "board",
-  },
-  {
-    id: "2",
-    src: "http",
-    info: "test",
-    name: "name",
-    startData: "startData",
-    endData: "endData",
-    price: "price",
-    coupon: "coupon",
-    couponPeriod: "couponPeriod",
-    couponDate: "couponDate",
-    value: "value",
-    board: "board",
-  },
-];
+import { defineProps } from 'vue';
+defineProps({
+  columnsRus: Object,
+  data: Array
+})
 </script>
 
 <template>

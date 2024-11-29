@@ -16,16 +16,14 @@ onMounted(async () => {
 
 const loading = ref(true);
 let data = ref();
-
 </script>
 
 <template>
     <Header />
     <Loader :loading="loading" />
-    <!-- <Table :columnsRus="columnsRus" :data="data" /> -->
-     <FAQ />
+    <Table :columnsRus="columnsRus" :data="data" />
+    <!-- <FAQ /> -->
     <div class="text-3xl text-center">
         <RouterView />
     </div>
 </template>
-

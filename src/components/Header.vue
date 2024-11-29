@@ -1,7 +1,7 @@
 <template>
-    <header class="flex items-center justify-between bg-teal-400 p-5">
-        <router-link class="font-semibold text-2xl" to="/">Любимые</router-link>
-        <router-link class="font-semibold text-2xl" to="/ofz">ОФЗ</router-link>
-        <router-link class="font-semibold text-2xl" to="/stablebonds">Надежные облигации</router-link>
+    <header class="flex items-center justify-center bg-teal-400 p-5">
+        <router-link class="font-semibold text-2xl px-5" to="/">Любимые</router-link>
+        <router-link class="font-semibold text-2xl px-5" to="/ofz">ОФЗ</router-link>
+        <router-link class="font-semibold text-2xl px-5" to="/stablebonds">Надежные облигации</router-link>
     </header>
 </template>

@@ -11,6 +11,7 @@ import { columnsRus } from "./api/services";
 
 onMounted(async () => {
     data.value = await getBonds();
+    loading.value = false;
     console.log(data.value);
 });
 

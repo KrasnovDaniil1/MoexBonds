@@ -1,4 +1,3 @@
-
 /* подсчёт оставшихся купонов */
 const calculateCouponCount = (couponDateStr, expireDateStr, period) => {
     let couponDate = new Date(couponDateStr);
@@ -36,11 +35,11 @@ export const changeBonds = (data) => {
         let expireDate =
             obj.MATDATE != "0000-00-00" ? obj.MATDATE : obj.BUYBACKDATE;
         /* осталось лет до оферты или погашения */
-        let expireYears = calculateExpireYears(expireDate);
+        let expireYears = calculateExpireYears(obj.MATDATE, obj.BUYBACKDATE);
         /* осталось купонов до оферты или погашения */
         let couponCount = calculateCouponCount(
             obj.NEXTCOUPON,
-            obj.MATDATE != "0000-00-00" ? obj.MATDATE : obj.BUYBACKDATE,
+            expireDate,
             obj.COUPONPERIOD
         );
         /* годовая доходность */
@@ -61,26 +60,14 @@ export const changeBonds = (data) => {
             NEXTCOUPON: obj.NEXTCOUPON,
             MATDATE: obj.MATDATE,
             BUYBACKDATE: obj.BUYBACKDATE,
-            BUYBACKPRICE: obj.BUYBACKPRICE,
             SECTYPE: obj.SECTYPE,
             LOTVALUE: obj.LOTVALUE,
-            REMARKS: obj.REMARKS,
-            MARKETCODE: obj.MARKETCODE,
             INSTRID: obj.INSTRID,
-            SECTORID: obj.SECTORID,
             FACEUNIT: obj.FACEUNIT,
             CURRENCYID: obj.CURRENCYID,
             LISTLEVEL: obj.LISTLEVEL,
             SECTYPE: obj.SECTYPE,
-            SETTLEDATE: obj.SETTLEDATE,
             BID: obj.BID,
-            OFFER: obj.OFFER,
-            LOW: obj.LOW,
-            HIGH: obj.HIGH,
-            LAST: obj.LAST,
-            MARKETPRICETODAY: obj.MARKETPRICETODAY,
-            MARKETPRICE: obj.MARKETPRICE,
-            MARKETPRICE2: obj.MARKETPRICE2,
             expireYears,
             couponCount,
             yearProfit,

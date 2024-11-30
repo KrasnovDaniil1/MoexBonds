@@ -1,7 +1,9 @@
-export const SortByNum = (data, up = false) => {
-    if (up) {
-        return data.sort((a, b) => +a.price - +b.price);
-    }
-    return data.sort((a, b) => +b.price - +a.price);
+/* сортировка по возрастанию */
+export const SortNumByUp = (data, key) => {
+    return data.sort((a, b) => +a[key] - +b[key]);
 };
 
+/* сортировка по убыванию */
+export const SortNumByDown = (data, key) => {
+    return data.sort((a, b) => +b[key] - +a[key]);
+};

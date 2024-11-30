@@ -8,7 +8,6 @@ import { onMounted, ref } from "vue";
 import { getBonds } from "./api/api";
 import { RouterView } from "vue-router";
 import { columnsRus } from "./api/services";
-import { SortByPrice } from "./api/sort";
 
 onMounted(async () => {
     data.value = await getBonds();

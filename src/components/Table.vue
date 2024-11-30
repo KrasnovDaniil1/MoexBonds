@@ -1,9 +1,11 @@
 <script setup>
-import { defineProps } from 'vue';
+import { defineProps } from "vue";
+import { columnsRus } from "../api/services";
 defineProps({
   columnsRus: Object,
-  data: Array
-})
+  data: Array,
+});
+
 </script>
 
 <template>
@@ -15,7 +17,10 @@ defineProps({
     </thead>
     <tbody>
       <tr v-for="item in data" :key="item.id">
-        <td v-for="(column, i) in columnsRus" :key="i">{{ item[i] }}</td>
+        <td v-for="(column, i) in columnsRus" :key="i">
+          <a :href="`https://www.tbank.ru/invest/bonds/${item[i]}`" v-if="column == 'ISIN'" target="_blank">{{ item[i] }}</a>
+          <div v-else>{{ item[i] }}</div>
+        </td>
       </tr>
     </tbody>
   </table>

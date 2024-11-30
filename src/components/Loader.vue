@@ -7,7 +7,7 @@ defineProps({
 
 <template>
     <div
-        v-if="loading"
+        v-if="!loading"
         class="flex flex-col justify-center items-center fixed top-0 left-0 h-full w-full bg-white z-10"
     >
         <div class="lds-ellipsis text-teal-400">

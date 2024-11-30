@@ -18,7 +18,7 @@ defineProps({
     <tbody>
       <tr v-for="item in data" :key="item.id">
         <td v-for="(column, i) in columnsRus" :key="i">
-          <a :href="`https://www.tbank.ru/invest/bonds/${item[i]}`" v-if="column == 'ISIN'">{{ item[i] }}</a>
+          <a :href="`https://www.tbank.ru/invest/bonds/${item[i]}`" v-if="column == 'ISIN'" target="_blank">{{ item[i] }}</a>
           <div v-else>{{ item[i] }}</div>
         </td>
       </tr>

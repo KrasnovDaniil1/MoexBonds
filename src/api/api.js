@@ -1,4 +1,8 @@
-import { convertArrayToObject, mergeObjectToObject } from "./services";
+import {
+    convertArrayToObject,
+    mergeObjectToObject,
+    removeDuplicate,
+} from "./services";
 import { changeBonds } from "./commands";
 
 const moexBaseUrl = "https://iss.moex.com/iss";
@@ -49,6 +53,7 @@ export const mergeBonds = (
     );
 
     let data = mergeObjectToObject(securities, markets, "SECID");
+    data = removeDuplicate(data, "SECID");
 
     return changeBonds(data);
 };

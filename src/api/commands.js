@@ -24,7 +24,6 @@ const calculateYearProfit = (
     couponCount,
     buyBackPrice
 ) => {
-    console.log(price, coupon, nkd, expireYears, couponCount, buyBackPrice);
     let total = couponCount * coupon - nkd + buyBackPrice - price;
     let res = (total / price / expireYears) * 100;
     return res;
@@ -46,7 +45,6 @@ export const changeBonds = (data) => {
         /* цена */
         let price = (obj.LOTVALUE / 100) * obj.BID;
         /* годовая доходность */
-        console.log(obj.BID)
         let yearProfit = calculateYearProfit(
             price,
             obj.COUPONVALUE,

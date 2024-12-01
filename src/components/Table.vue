@@ -1,7 +1,6 @@
 <script setup>
 import { defineProps } from "vue";
 import { columnsRus } from "../api/services";
-import Sort from "./Sort.vue";
 defineProps({
     columnsRus: Object,
     data: Array,
@@ -9,8 +8,7 @@ defineProps({
 </script>
 
 <template>
-    <Sort />
-    <table class="text-center overflow-scroll">
+    <table class="text-center overflow-scroll mx-auto">
         <thead>
             <tr>
                 <th v-for="column in columnsRus" :key="column">{{ column }}</th>
@@ -20,7 +18,7 @@ defineProps({
             <tr v-for="item in data" :key="item.id">
                 <td v-for="(v, k) in columnsRus" :key="k">
                     <a
-                        class="hover:text-sky-500 transition"
+                        class="text-sky-500"
                         :href="`https://www.tbank.ru/invest/bonds/${item[k]}`"
                         target="_blank"
                         v-if="k == 'ISIN'"

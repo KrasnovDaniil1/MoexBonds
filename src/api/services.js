@@ -19,6 +19,16 @@ export const mergeObjectToObject = (securities, markets, key) => {
     return data;
 };
 
+export const removeDuplicate = (data, key) => {
+    let k = data[0];
+    return data.filter((item) => {
+        if (item[key] != k[key]) {
+            k = item;
+            return item;
+        }
+    });
+};
+
 export const columnsRus = {
     ISIN: "Номер",
     SHORTNAME: "Название",

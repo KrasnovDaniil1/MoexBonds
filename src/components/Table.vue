@@ -1,6 +1,7 @@
 <script setup>
 import { defineProps } from "vue";
 import { columnsRus } from "../api/services";
+import Sort from "./Sort.vue";
 defineProps({
     columnsRus: Object,
     data: Array,
@@ -8,6 +9,7 @@ defineProps({
 </script>
 
 <template>
+    <Sort />
     <table class="text-center overflow-scroll">
         <thead>
             <tr>
@@ -18,6 +20,7 @@ defineProps({
             <tr v-for="item in data" :key="item.id">
                 <td v-for="(v, k) in columnsRus" :key="k">
                     <a
+                        class="hover:text-sky-500 transition"
                         :href="`https://www.tbank.ru/invest/bonds/${item[k]}`"
                         target="_blank"
                         v-if="k == 'ISIN'"

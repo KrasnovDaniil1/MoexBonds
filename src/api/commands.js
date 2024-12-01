@@ -72,8 +72,8 @@ export const changeBonds = (data) => {
             CURRENCYID: obj.CURRENCYID,
             LISTLEVEL: obj.LISTLEVEL,
             SECTYPE: obj.SECTYPE,
+            couponCount,
             expireYears: expireYears.toFixed(2),
-            couponCount: couponCount,
             yearProfit: yearProfit.toFixed(2),
             price: price.toFixed(2),
         };

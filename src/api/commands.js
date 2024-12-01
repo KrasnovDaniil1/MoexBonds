@@ -1,4 +1,3 @@
-
 /* подсчёт оставшихся купонов */
 const calculateCouponCount = (couponDateStr, expireDateStr, period) => {
     let couponDate = new Date(couponDateStr);
@@ -25,9 +24,10 @@ const calculateYearProfit = (
     couponCount,
     buyBackPrice
 ) => {
-    let total = couponCount * coupon - nkd + (buyBackPrice - price);
+    console.log(price, coupon, nkd, expireYears, couponCount, buyBackPrice);
+    let total = couponCount * coupon - nkd + buyBackPrice - price;
     let res = (total / price / expireYears) * 100;
-    return res.toFixed(2);
+    return res;
 };
 
 export const changeBonds = (data) => {
@@ -36,54 +36,46 @@ export const changeBonds = (data) => {
         let expireDate =
             obj.MATDATE != "0000-00-00" ? obj.MATDATE : obj.BUYBACKDATE;
         /* осталось лет до оферты или погашения */
-        let expireYears = calculateExpireYears(expireDate);
+        let expireYears = calculateExpireYears(obj.MATDATE, obj.BUYBACKDATE);
         /* осталось купонов до оферты или погашения */
         let couponCount = calculateCouponCount(
             obj.NEXTCOUPON,
-            obj.MATDATE != "0000-00-00" ? obj.MATDATE : obj.BUYBACKDATE,
+            expireDate,
             obj.COUPONPERIOD
         );
+        /* цена */
+        let price = (obj.LOTVALUE / 100) * obj.BID;
         /* годовая доходность */
+        console.log(obj.BID)
         let yearProfit = calculateYearProfit(
-            obj.MARKETPRICE,
+            price,
             obj.COUPONVALUE,
             obj.ACCRUEDINT,
             expireYears,
             couponCount,
             obj.LOTVALUE
         );
+
         return {
             ISIN: obj.ISIN,
             SHORTNAME: obj.SHORTNAME,
             COUPONPERIOD: obj.COUPONPERIOD,
             COUPONVALUE: obj.COUPONVALUE,
-            ACCRUEDINT: obj.ACCRUEDINT,
+            ACCRUEDINT: obj.ACCRUEDINT.toFixed(2),
             NEXTCOUPON: obj.NEXTCOUPON,
             MATDATE: obj.MATDATE,
             BUYBACKDATE: obj.BUYBACKDATE,
-            BUYBACKPRICE: obj.BUYBACKPRICE,
             SECTYPE: obj.SECTYPE,
             LOTVALUE: obj.LOTVALUE,
-            REMARKS: obj.REMARKS,
-            MARKETCODE: obj.MARKETCODE,
             INSTRID: obj.INSTRID,
-            SECTORID: obj.SECTORID,
             FACEUNIT: obj.FACEUNIT,
             CURRENCYID: obj.CURRENCYID,
             LISTLEVEL: obj.LISTLEVEL,
             SECTYPE: obj.SECTYPE,
-            SETTLEDATE: obj.SETTLEDATE,
-            BID: obj.BID,
-            OFFER: obj.OFFER,
-            LOW: obj.LOW,
-            HIGH: obj.HIGH,
-            LAST: obj.LAST,
-            MARKETPRICETODAY: obj.MARKETPRICETODAY,
-            MARKETPRICE: obj.MARKETPRICE,
-            MARKETPRICE2: obj.MARKETPRICE2,
-            expireYears,
-            couponCount,
-            yearProfit,
+            expireYears: expireYears.toFixed(2),
+            couponCount: couponCount,
+            yearProfit: yearProfit.toFixed(2),
+            price: price.toFixed(2),
         };
     });
 };

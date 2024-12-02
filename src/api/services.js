@@ -29,6 +29,15 @@ export const removeDuplicate = (data, key) => {
     });
 };
 
+export const nullPrice = (arr) => {
+    for (let i of arr) {
+        if (i !== null) {
+            return i;
+        }
+    }
+    return null;
+};
+
 export const columnsRus = {
     ISIN: "Номер",
     SHORTNAME: "Название",

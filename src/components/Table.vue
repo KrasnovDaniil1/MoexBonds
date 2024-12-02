@@ -17,9 +17,16 @@ defineProps({
         <tbody>
             <tr v-for="item in data" :key="item.id">
                 <td v-for="(v, k) in columnsRus" :key="k">
-                    <a
+                    <!-- <a
                         class="text-sky-500"
                         :href="`https://www.tbank.ru/invest/bonds/${item[k]}`"
+                        target="_blank"
+                        v-if="k == 'ISIN'"
+                        >{{ item[k] }}</a
+                    > -->
+                    <a
+                        class="text-sky-500"
+                        :href="`https://www.moex.com/ru/issue.aspx?board=${item.BOARDID}&code=${item[k]}`"
                         target="_blank"
                         v-if="k == 'ISIN'"
                         >{{ item[k] }}</a

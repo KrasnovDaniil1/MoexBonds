@@ -49,7 +49,7 @@ function changeSortKey(v) {
         />
     </div>
     <Table :columnsRus="columnsRus" :data="data" />
-    <div class="text-3xl text-center">
+    <!-- <div class="text-3xl text-center">
         <RouterView />
-    </div>
+    </div> -->
 </template>

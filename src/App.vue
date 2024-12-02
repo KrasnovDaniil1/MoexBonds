@@ -17,7 +17,7 @@ const sortUpDown = ref(sortByUpDown.default);
 
 function SortBonds() {
     data.value = SortNum(data.value, sortKey.value, sortUpDown.value);
-    console.log('ok')
+    
 }
 
 onMounted(async () => {
@@ -29,13 +29,16 @@ onMounted(async () => {
 watch(sortKey, () => {
     SortBonds()
 })
+watch(sortUpDown, () => {
+    SortBonds()
+})
 </script>
 
 <template>
     <Header />
     <Loader :loading="loading" />
     <div>
-        <Sort :sortList="sortList" @changeSort="n => (sortKey = n)" />
+        <Sort :sortList="sortList" :sortByUpDown="sortByUpDown" @changeSort="n => (sortKey = n)" @changeByUpDown="sortUpDown = !sortUpDown" />
     </div>
     <Table :columnsRus="columnsRus" :data="data" />
     <div class="text-3xl text-center">

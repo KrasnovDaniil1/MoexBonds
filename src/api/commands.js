@@ -1,3 +1,5 @@
+import { nullPrice } from "./services";
+
 /* подсчёт оставшихся купонов */
 const calculateCouponCount = (couponDateStr, expireDateStr, period) => {
     let couponDate = new Date(couponDateStr);
@@ -43,7 +45,10 @@ export const changeBonds = (data) => {
             obj.COUPONPERIOD
         );
         /* цена */
-        let price = (obj.LOTVALUE / 100) * obj.BID;
+        let price =
+            (obj.LOTVALUE / 100) *
+            nullPrice([obj.BID, obj.LOW, obj.HIGH, obj.LAST]);
+        // console.log(nullPrice([obj.BID, obj.LOW, obj.HIGH, obj.LAST]));
         /* годовая доходность */
         let yearProfit = calculateYearProfit(
             price,

@@ -4,7 +4,7 @@ import Table from "./components/Table.vue";
 import Loader from "./components/Loader.vue";
 import Sort from "./components/Sort.vue";
 
-import { onMounted, ref } from "vue";
+import { onMounted, ref, watch } from "vue";
 import { getBonds } from "./api/api";
 import { RouterView } from "vue-router";
 import { columnsRus } from "./api/services";
@@ -17,6 +17,7 @@ const sortUpDown = ref(sortByUpDown.default);
 
 function SortBonds() {
     data.value = SortNum(data.value, sortKey.value, sortUpDown.value);
+    console.log('ok')
 }
 
 onMounted(async () => {
@@ -24,13 +25,17 @@ onMounted(async () => {
     SortBonds();
     loading.value = false;
 });
+
+watch(sortKey, () => {
+    SortBonds()
+})
 </script>
 
 <template>
     <Header />
     <Loader :loading="loading" />
     <div>
-        <Sort :sortList="sortList" />
+        <Sort :sortList="sortList" @changeSort="n => (sortKey = n)" />
     </div>
     <Table :columnsRus="columnsRus" :data="data" />
     <div class="text-3xl text-center">

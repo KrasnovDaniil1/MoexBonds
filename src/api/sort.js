@@ -22,5 +22,5 @@ export const sortList = {
 
 export const sortByUpDown = {
     title: "Сортировать по возрастанию / убыванию",
-    default: false,
+    default: true,
 };

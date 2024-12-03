@@ -1,6 +1,7 @@
 <script setup>
 import { defineProps } from "vue";
 import { columnsRus } from "../api/services";
+
 defineProps({
     columnsRus: Object,
     data: Array,

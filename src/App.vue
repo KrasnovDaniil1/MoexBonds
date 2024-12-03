@@ -40,7 +40,7 @@ function changeSortKey(v) {
 <template>
   <Header />
   <Loader :loading="loading" />
-  <div>
+  <div class="flex items-center">
     <Sort
       :sortList="sortList"
       :sortByUpDown="sortByUpDown"

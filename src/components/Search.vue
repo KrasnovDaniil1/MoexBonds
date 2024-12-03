@@ -47,5 +47,4 @@ const searchInput = ref('')
       </button>
     </div>
   </form>
-  <div class="flex justify-center m-3">{{ searchInput }}</div>
 </template>

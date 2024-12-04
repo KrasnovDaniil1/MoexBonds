@@ -37,6 +37,7 @@ const searchInput = ref('')
         class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
         placeholder="Search"
         v-model="searchInput"
+        @change="$emit('sortInput', searchInput)"
         required
       />
       <button

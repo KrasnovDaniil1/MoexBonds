@@ -29,13 +29,20 @@ export const removeDuplicate = (data, key) => {
     });
 };
 
-export const nullPrice = (arr) => {
-    for (let i of arr) {
-        if (i !== null) {
-            return i;
+export const nullPrice = (arr,d = 0) => {
+    for (let v of arr) {
+        if (v !== null && !isNaN(v) && isFinite(v)) {
+            return v;
         }
     }
-    return null;
+    return d;
+};
+
+export const nullData = (v, d = 0) => {
+    if (v !== null && !isNaN(v) && isFinite(v)) {
+        return v;
+    }
+    return d;
 };
 
 export const columnsRus = {

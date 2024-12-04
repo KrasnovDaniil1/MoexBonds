@@ -33,7 +33,6 @@ const filters = ref("yearProfit");
       </form>
     </div>
     <div class="flex justify-center gap-3">
-      <!-- <p class="text-sm font-medium text-gray-90">{{ sortByUpDown.title }}</p> -->
       <div class="cursor-pointer m-3" @click="$emit('changeByUpDown')">
         <svg
           version="1.0"

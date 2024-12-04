@@ -10,14 +10,20 @@ import { getBonds } from "./api/api";
 import { RouterView } from "vue-router";
 import { columnsRus } from "./api/services";
 import { sortList, SortNum, sortByUpDown } from "./api/sort";
+import { searchInput } from "./api/search";
 
 const data = ref();
 const loading = ref(true);
 const sortKey = ref(sortList.default);
 const sortUpDown = ref(sortByUpDown.default);
+const sortInput = ref("");
 
 function SortBonds() {
   data.value = SortNum(data.value, sortKey.value, sortUpDown.value);
+}
+
+function SortInput() {
+  data.value = searchInput(data.value, sortInput.value);
 }
 
 onMounted(async () => {
@@ -35,6 +41,11 @@ function changeSortKey(v) {
   sortKey.value = v;
   SortBonds();
 }
+
+function changeSortInput(v) {
+  sortInput.value = v;
+  SortInput();
+}
 </script>
 
 <template>
@@ -47,7 +58,7 @@ function changeSortKey(v) {
       @changeSort="(n) => changeSortKey(n)"
       @changeByUpDown="() => changeSortUpDown()"
     />
-    <Search />
+    <Search @sortInput="(n) => changeSortInput(n)" />
   </div>
   <Table :columnsRus="columnsRus" :data="data" />
   <div class="text-3xl text-center">

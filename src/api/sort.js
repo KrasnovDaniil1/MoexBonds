@@ -6,6 +6,7 @@ export const SortNum = (data, key, down = true) => {
     return data.sort((a, b) => +a[key] - +b[key]);
 };
 
+
 /* сортировка по убыванию */
 
 export const sortList = {

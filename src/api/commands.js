@@ -1,4 +1,4 @@
-import { nullPrice } from "./services";
+import { nullPrice, nullData } from "./services";
 
 /* подсчёт оставшихся купонов */
 const calculateCouponCount = (couponDateStr, expireDateStr, period) => {
@@ -37,12 +37,13 @@ export const changeBonds = (data) => {
         let expireDate =
             obj.MATDATE != "0000-00-00" ? obj.MATDATE : obj.BUYBACKDATE;
         /* осталось лет до оферты или погашения */
-        let expireYears = calculateExpireYears(obj.MATDATE, obj.BUYBACKDATE);
+        let expireYears = nullData(
+            calculateExpireYears(obj.MATDATE, obj.BUYBACKDATE)
+        );
+        console.log(expireYears);
         /* осталось купонов до оферты или погашения */
-        let couponCount = calculateCouponCount(
-            obj.NEXTCOUPON,
-            expireDate,
-            obj.COUPONPERIOD
+        let couponCount = nullData(
+            calculateCouponCount(obj.NEXTCOUPON, expireDate, obj.COUPONPERIOD)
         );
         /* цена */
         let price =
@@ -63,7 +64,7 @@ export const changeBonds = (data) => {
             ISIN: obj.ISIN,
             SHORTNAME: obj.SHORTNAME,
             COUPONPERIOD: obj.COUPONPERIOD,
-            COUPONVALUE: obj.COUPONVALUE,
+            COUPONVALUE: nullData(obj.COUPONVALUE),
             ACCRUEDINT: obj.ACCRUEDINT.toFixed(2),
             NEXTCOUPON: obj.NEXTCOUPON,
             MATDATE: obj.MATDATE,
@@ -75,9 +76,10 @@ export const changeBonds = (data) => {
             CURRENCYID: obj.CURRENCYID,
             LISTLEVEL: obj.LISTLEVEL,
             SECTYPE: obj.SECTYPE,
+            BOARDID: obj.BOARDID,
             couponCount,
             expireYears: expireYears.toFixed(2),
-            yearProfit: yearProfit.toFixed(2),
+            yearProfit: nullData(yearProfit.toFixed(2)),
             price: price.toFixed(2),
         };
     });

@@ -40,7 +40,7 @@ export const changeBonds = (data) => {
         let expireYears = nullData(
             calculateExpireYears(obj.MATDATE, obj.BUYBACKDATE)
         );
-        console.log(expireYears);
+        // console.log(expireYears);
         /* осталось купонов до оферты или погашения */
         let couponCount = nullData(
             calculateCouponCount(obj.NEXTCOUPON, expireDate, obj.COUPONPERIOD)

@@ -22,8 +22,12 @@ function SortBonds() {
   data.value = SortNum(data.value, sortKey.value, sortUpDown.value);
 }
 
-function SortInput() {
-  data.value = searchInput(data.value, sortInput.value);
+async function SortInput() {
+  if (sortInput.value.length <= 0) {
+    data.value = await getBonds();
+  } else {
+    data.value = searchInput(data.value, sortInput.value);
+  }
 }
 
 onMounted(async () => {

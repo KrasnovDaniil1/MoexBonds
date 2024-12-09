@@ -1,6 +1,7 @@
 export const searchInput = (data, input) => {
-  if (input) {
-    console.log(1)
-    return data.filter((name) => name.indexOf(input) !== -1)
-  }
+    console.log(1);
+    return data.filter(
+      (name) =>
+        name.ISIN.indexOf(input) !== -1 || name.SHORTNAME.indexOf(input) !== -1
+    );
 };
